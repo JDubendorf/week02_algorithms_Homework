@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bang Bang</title>
+</head>
+<body>
+	
+	<script>
+
+		numGuess = (Math.floor(Math.random() * (75 - 25) + 25));
+		var min = 1;
+		var max = 101;
+
+		alert("Choose a number in between, but not including, 0 and 101. Write it down, then see if the computer can guess it!");
+
+		var userInput = prompt("Is " + numGuess + " your number? Press 'H' if your number is higher, 'L' if your number is lower, and 'Y' if the computer guessed correctly.");
+
+		while (userInput !== "Y") {	
+			if (numGuess === 100 && userInput === "H" || numGuess === 1 && userInput === "L") {
+					alert(numGuess + " must be your guess- it's the only number left!");
+					userInput = "Y";
+			} else if (userInput === "H") {
+				min = numGuess;
+				numGuess = Math.floor(min + ((max - min)/2));
+				userInput = prompt("Is " + numGuess + " your number? Press 'H' if your number is higher, 'L' if your number is lower, and 'Y' if the computer guessed correctly.");
+			} else if (userInput === "L") {
+				max = numGuess;
+				numGuess = Math.floor(max - ((max - min) / 2));
+				userInput = prompt("Is " + numGuess + " your number? Press 'H' if your number is higher, 'L' if your number is lower, and 'Y' if the computer guessed correctly.");
+			} else {
+				userInput = prompt("Please be sure to only enter 'Y', 'H', or 'L'. Is " + numGuess + " your number? Press 'H' if your number is higher, 'L' if your number is lower, and 'Y' if the computer guessed correctly.");
+			}
+		}
+
+		alert("Your number is " + numGuess + ". Thank you for playing!");
+
+	</script>
+</body>
+</html>
